@@ -39,4 +39,6 @@ class VirtualCls:
 a = Validator()
 b = VirtualCls()
 
-print(b.prime_number(5))
+print(isinstance(b, AbcClass))
+AbcClass.register(VirtualCls)
+print(isinstance(b, AbcClass))
