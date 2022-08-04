@@ -15,20 +15,20 @@ class AbcClass(abc.ABC):
 
     @abc.abstractmethod
     def prime_number(self, number):
+        pass
+
+
+class Validator(AbcClass):
+
+    def prime_number(self, number):
         for i in range(2, number):
             if not number % i:
                 return False
         return True
 
 
-class Validator(AbcClass):
-    def prime_number(self, number):
-        return super().prime_number(number)
-
-
 class VirtualCls:
 
-    @classmethod
     def prime_number(self, number):
         for i in range(2, number):
             if not number % i:
@@ -39,6 +39,4 @@ class VirtualCls:
 a = Validator()
 b = VirtualCls()
 
-print(isinstance(b, AbcClass))
-AbcClass.register(VirtualCls)
-print(isinstance(b, AbcClass))
+print(b.prime_number(5))
